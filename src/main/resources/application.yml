@@ -1,0 +1,31 @@
+server:
+  port: 80
+
+spring:
+
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    defer-datasource-initialization: true
+
+logging:
+  level:
+    me.silvernine: DEBUG
+
+#  jpa.hibernate.ddl-auto: create-drop 은 편의를 위해서 서버
+#  defer-datasource-initialization: true 은 스프링 2.5.0 버전 이상 부터는 hibernate 초기화 과정보다 resources 폴더 아래의 *.sql이 먼저 실행되기 때문에 추가해줌.
